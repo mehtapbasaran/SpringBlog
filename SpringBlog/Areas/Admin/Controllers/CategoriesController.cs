@@ -1,4 +1,5 @@
-﻿using SpringBlog.Models;
+﻿using SpringBlog.Helpers;
+using SpringBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,6 +28,7 @@ namespace SpringBlog.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                category.Slug = UrlService.URLFriendly(category.Slug);
                 db.Categories.Add(category);
                 db.SaveChanges();
                 TempData["SuccessMessage"] = "The category has been created successfully.";
@@ -58,6 +60,7 @@ namespace SpringBlog.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                category.Slug = UrlService.URLFriendly(category.Slug);
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["SuccessMessage"] = "The category has been updated successfully.";
