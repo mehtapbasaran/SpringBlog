@@ -3,6 +3,7 @@ using SpringBlog.Models;
 using SpringBlog.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -55,7 +56,7 @@ namespace SpringBlog.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-           
+            ViewBag.Message = ConfigurationManager.AppSettings["ad"];
             return View();
         }
 
